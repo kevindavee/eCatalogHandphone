@@ -1,0 +1,28 @@
+﻿@model eCatalog.ViewModel.AdminViewModel.AdminBrandViewModel
+
+@Html.Hidden("BrandPageCounts", Model.PageCounts)
+@Html.Hidden("BrandPageIndex", Model.PageIndex)
+<table class="table table-bordered table-striped table-responsive text-center">
+    <thead>
+        <tr>
+            <td>Nama Handphone</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Brand)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td><a href="@Url.Action("AddBrand", new { id = item.Id})" class="btn btn-primary">Edit</a></td>
+                <td><a href="@Url.Action("DeleteBrand", new { id = item.Id})" class="btn btn-danger">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="col-md-12">
+    <button class="btn btn-info btn-toggle-brand" id="btn-previous-brand" value="0">Prev</button>
+    <button class="btn btn-info pull-right btn-toggle-brand" id="btn-next-brand" value="1">Next</button>
+</div>

@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title Phonesia Store</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    
+    <!--Custom-Theme-files-->
+    <!--theme-style-->
+    <link href="~/Assets/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--start-menu-->
+
+    <script src="~/Assets/js/simpleCart.min.js"></script>
+    <link href="~/Assets/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="~/Assets/js/memenu.js"></script>
+    <script>$(document).ready(function () { $(".memenu").memenu(); });</script>
+    <!--dropdown-->
+    <script src="~/Assets/js/jquery.easydropdown.js"></script>
+
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <!--top-header-->
+    <!--start-logo-->
+    <div class="logo">
+        <a href="@Url.Action("Index", "Home")"><h1>Phonesia</h1></a>
+    </div>
+    <!--start-logo-->
+    <!--bottom-header-->
+    <div class="header-bottom">
+        <div class="container">
+            <div class="header">
+                <div class="col-md-9 header-left">
+                    <div class="top-nav">
+                        <ul class="memenu skyblue">
+                            <li class="active"><a href="@Url.Action("Index", "Home")">Home</a></li>
+                           @{ Html.RenderAction("BrandMenu", "Home");}
+                            
+                        </ul>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="col-md-3 header-right">
+                        @Html.Partial("_LoginPartial")
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+
+    <!--bottom-header-->
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+
+    </div>
+    <div class="top-header">
+        <div class="container">
+            <div class="footer-top">
+                <div class="col-md-6 footer-left">
+                    <p style="color:white">Jl. BSD Green Office Park, GOP 9 - G Floor, BSD City, Sampora, Cisauk, Tangerang, Banten 15345</p>
+                </div>
+                <div class="col-md-6 footer-right">
+                    <p style="color:white">© 2017 Phonesia. All Rights Reserved | Design by DGVS Software House </p>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+</body>
+</html>

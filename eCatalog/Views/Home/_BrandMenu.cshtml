@@ -1,0 +1,18 @@
+﻿@model IEnumerable<eCatalog.Core.HandphoneClass.Brand>
+
+<li class="grid">
+    <a href="#">Handphone</a>
+    <div class="mepanel">
+        <div class="row">
+            <div class="col1 me-one">
+                <h4><a href="@Url.Action("Index", "Handphone", new { PageIndex = 0, BrandId = 0})">All Brand</a></h4>
+                <ul>
+                    @foreach (var item in Model)
+                    {
+                        <li><a href="products.html">@item.Name</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</li>

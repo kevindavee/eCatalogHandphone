@@ -1,0 +1,86 @@
+﻿@model eCatalog.ViewModel.HandphoneIndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+	<!--end-breadcrumbs-->
+<!--prdt-starts-->
+<div class="col-md-12">
+    <div class="col-md-5">
+        <div class="available">
+            <ul>
+                <li>
+                    Sort
+                    <select>
+                        <option>Silver</option>
+                        <option>Black</option>
+                        <option>Dark Black</option>
+                        <option>Red</option>
+                    </select>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="available">
+            <div class="form-group">
+                <div class="col-md-3">
+                    <label for="usr"style="margin-top:5px;">Harga Min:</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="number" class="form-control" id="txt-min-harga">
+                </div>
+                <div class="col-md-3">
+                    <label for="usr" style="margin-top:5px;">Harga Max:</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="number" class="form-control" id="txt-max-harga">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="prdt">
+    <div class="container">
+        <div class="prdt-top">
+            <div class="col-md-12">
+                
+                @{ int i = 0;}
+                @foreach (var item in Model.Handphone)
+                {
+                    if ((i / 4) == 0)
+                    {
+                        @:<div class="product-one">
+                    }
+
+                    <div class="col-md-3 product-left p-left">
+                        <div class="product-main simpleCart_shelfItem">
+                            <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="~/Assets/images/p-1.png" alt="" /></a>
+                            <div class="product-bottom">
+                                <h3>@item.Name</h3>
+                                <p>@item.Brand.Name</p>
+                                <h4> <span class=" item_price">Rp. @item.SellPrice</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    if ((i % 4) == 3)
+                    {
+                        @:<div class="clearfix"></div>
+                        @:</div>
+                    }
+                    i++;
+                }
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--product-end-->
+

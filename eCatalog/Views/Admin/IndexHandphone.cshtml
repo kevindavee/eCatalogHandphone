@@ -1,0 +1,41 @@
+﻿@model IEnumerable<eCatalog.Core.HandphoneClass.Handphone>
+
+@{
+    ViewBag.Title = "Manage Handphone";
+}
+
+<br />
+<div class="row">
+    <div class="col-md-2">
+        <a href="@Url.Action("AddHandphone", new { id = 0})" class="btn btn-primary">Add New</a>
+    </div>
+</div>
+<br />
+<table class="table table-bordered table-striped table-responsive text-center">
+    <thead>
+        <tr>
+            <td>Nama Handphone</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td><a href="@Url.Action("AddHandphone", new { id = item.Id})" class="btn btn-primary">Edit</a></td>
+                <td>
+                    @using (Html.BeginForm("DeleteHandphone", "Admin", new { id = item.Id }, FormMethod.Post, htmlAttributes: new { @class = "form-horizontal" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="submit" class="btn btn-danger btn-admin-delete" value="Delete" />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script type="text/javascript" src="~/Scripts/Admin/admin-jquery.js"></script>
+

@@ -17,9 +17,14 @@ namespace eCatalog.DAL.HandphoneRepo
             context.SaveChanges();
         }
 
+        public List<Handphone> GetAllOrderbyName()
+        {
+            return GetAll().OrderBy(o => o.Name).ToList();
+        }
+
         public List<Handphone> GetbyMostSeen()
         {
-            return dbSet.OrderByDescending(s => s.Seen).ToListAsync().Result;
+            return GetAll().OrderByDescending(s => s.Seen).ToList();
         }
 
         public List<Handphone> GetbyBrand(List<Handphone> list, long BrandId)
@@ -43,7 +48,7 @@ namespace eCatalog.DAL.HandphoneRepo
 
         public override List<Handphone> GetAll()
         {
-            return dbSet.OrderBy(o => o.Id).Include(i => i.Brand).ToListAsync().Result;
+            return dbSet.Where(s => s.isDeleted == false).OrderBy(o => o.Id).Include(i => i.Brand).ToListAsync().Result;
         }
         
         public void AddViewer(long id)

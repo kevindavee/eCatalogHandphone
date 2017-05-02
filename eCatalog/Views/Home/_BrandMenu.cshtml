@@ -9,7 +9,7 @@
                 <ul>
                     @foreach (var item in Model)
                     {
-                        <li><a href="products.html">@item.Name</a></li>
+                        <li><a href="@Url.Action("Index", "Handphone", new { PageIndex = 0, BrandId = item.Id})">@item.Name</a></li>
                     }
                 </ul>
             </div>

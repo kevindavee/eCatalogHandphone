@@ -171,7 +171,7 @@ namespace eCatalog.Controllers
 
             if (upload != null)
             {
-                var fileName = "~/Images/Handphone/" + Path.GetFileName(upload.FileName);
+                var fileName = "/Images/Handphone/" + Path.GetFileName(upload.FileName);
 
                 upload.SaveAs(Server.MapPath(fileName));
                 imageUrl = fileName;

@@ -22,7 +22,6 @@ namespace eCatalog.Controllers
             //abc
             int PageSize = 16;
             HandphoneIndexViewModel viewmodel = new HandphoneIndexViewModel();
-            Sorting sorting = new Sorting();
 
             //Filtering Brand
             if (BrandID == 0)

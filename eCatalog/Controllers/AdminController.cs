@@ -31,7 +31,10 @@ namespace eCatalog.Controllers
 
             return View(viewmodel);
         }
-
+        public ActionResult nyoba()
+        {
+            return View();
+        }
         public PartialViewResult ListOfHandphone(int PageIndex)
         {
             //Controller untuk return list of handphone

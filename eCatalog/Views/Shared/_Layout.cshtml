@@ -11,7 +11,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~bundles/jqueryval")
-    
+
     <!--Custom-Theme-files-->
     <!--theme-style-->
     <link href="~/Assets/css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -28,7 +28,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="~/Assets/js/memenu.js"></script>
     <script>$(document).ready(function () { $(".memenu").memenu(); });</script>
     <!--dropdown-->
-    <script src="~/Assets/js/jquery.easydropdown.js"></script>    
+    <script src="~/Assets/js/jquery.easydropdown.js"></script>
 
 </head>
 <body>
@@ -46,14 +46,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="top-nav">
                         <ul class="memenu skyblue">
                             <li class="active"><a href="@Url.Action("Index", "Home")">Home</a></li>
-                           @{ Html.RenderAction("BrandMenu", "Home");}
-                            
+                            @{ Html.RenderAction("BrandMenu", "Home");}
+
                         </ul>
                     </div>
                     <div class="clearfix"> </div>
                 </div>
                 <div class="col-md-3 header-right">
-                        @Html.Partial("_LoginPartial")
+                    @Html.Partial("_LoginPartial")
                 </div>
                 <div class="clearfix"> </div>
             </div>
@@ -75,12 +75,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="col-md-6 footer-right">
                     <p style="color:white">© 2017 Phonesia. All Rights Reserved | Design by DGVS Software House </p>
                 </div>
-              
+
             </div>
         </div>
     </div>
 
-    
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

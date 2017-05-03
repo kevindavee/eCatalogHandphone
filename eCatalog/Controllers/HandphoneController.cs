@@ -30,7 +30,7 @@ namespace eCatalog.Controllers
         public PartialViewResult IndexList(int PageIndex, int BrandID, int? MaxHarga, int? MinHarga, int sort)
         {
             HandphoneIndexListViewModel viewmodel = new HandphoneIndexListViewModel();
-            int PageSize = 2;
+            int PageSize = 16;
 
             //Filtering Brand
             if (BrandID == 0)

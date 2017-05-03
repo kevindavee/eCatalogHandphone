@@ -5,15 +5,11 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-
-
-<div class="col-md-6">
+<div class="col-md-12">
     <h1>@ViewBag.Title</h1>
     <br />
-    <br />
     <a href="@Url.Action("AddHandphone", new { id = 0})" class="btn btn-primary">Add New</a>
-</div>
-<div class="col-md-12">
+
     <table class="table table-bordered table-responsive text-center data-table">
         <thead>
             <tr>

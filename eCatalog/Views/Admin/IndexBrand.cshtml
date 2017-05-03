@@ -1,8 +1,11 @@
 ﻿@model IEnumerable<eCatalog.Core.HandphoneClass.Brand>
 
 @{
-    ViewBag.Title = "Manage Brand";
+    ViewBag.Title = "IndexBrand";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<h1>@ViewBag.Title</h1>
+<br />
 <br />
 <div class="row">
     <div class="col-md-2">
@@ -10,28 +13,35 @@
     </div>
 </div>
 <br />
-<table class="table table-bordered table-striped table-responsive text-center table-admin">
-    <thead>
-        <tr>
-            <td>Nama Handphone</td>
-            <td></td>
-            <td></td>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Name</td>
-                <td><a href="@Url.Action("AddBrand", new { id = item.Id})" class="btn btn-primary">Edit</a></td>
-                <td>
-                    @using (Html.BeginForm("DeleteBrand", "Admin", new { id = item.Id}, FormMethod.Post, htmlAttributes: new { @class = "form-horizontal"}))
-                    {
-                        @Html.AntiForgeryToken()
-                        <input type="submit" class="btn btn-danger btn-admin-delete" value="Delete" />
-                    }
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-striped table-responsive text-center table-admin">
+            <thead>
+                <tr>
+                    <td>Nama Handphone</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td><a href="@Url.Action("AddBrand", new { id = item.Id})" class="btn btn-primary">Edit</a></td>
+                        <td>
+                            @using (Html.BeginForm("DeleteBrand", "Admin", new { id = item.Id }, FormMethod.Post, htmlAttributes: new { @class = "form-horizontal" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <input type="submit" class="btn btn-danger btn-admin-delete" value="Delete" />
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+

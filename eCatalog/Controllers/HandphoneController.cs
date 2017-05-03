@@ -1,4 +1,5 @@
-﻿using eCatalog.DAL.HandphoneRepo;
+﻿using eCatalog.Constants;
+using eCatalog.DAL.HandphoneRepo;
 using eCatalog.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,9 @@ namespace eCatalog.Controllers
             //abc
             int PageSize = 16;
             HandphoneIndexViewModel viewmodel = new HandphoneIndexViewModel();
+            Sorting sorting = new Sorting();
 
+            //Filtering Brand
             if (BrandID == 0)
             {
                 viewmodel.Handphone = handphoneRepo.GetAll();
@@ -31,6 +34,7 @@ namespace eCatalog.Controllers
                 viewmodel.Handphone = handphoneRepo.GetbyBrand(handphoneRepo.GetAll(), BrandID);
             }
 
+            //Filter by Price range
             viewmodel.Handphone = handphoneRepo.GetbyFilterPrice(viewmodel.Handphone, MinHarga, MaxHarga);
 
             viewmodel.PageCounts = (int)Math.Ceiling(Convert.ToDecimal(viewmodel.Handphone.Count / PageSize));

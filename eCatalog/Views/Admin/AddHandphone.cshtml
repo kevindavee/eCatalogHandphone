@@ -2,10 +2,13 @@
 
 @{
     ViewBag.Title = "Add / Edit Hanphone";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <br />
 
+<h1>@ViewBag.Title</h1>
+<br />
 @using (Html.BeginForm("AddHandphone", "Admin", new { id = Model.Id}, FormMethod.Post, htmlAttributes: new { @class = "form-horizontal", enctype = "multipart/form-data"}))
 {
     @Html.AntiForgeryToken()

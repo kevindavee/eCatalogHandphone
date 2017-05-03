@@ -1,12 +1,17 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>@ViewBag.Title Phonesia Store</title>
-    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Phonesia Store</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
     <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-
+    @Scripts.Render("~bundles/jqueryval")
+    
     <!--Custom-Theme-files-->
     <!--theme-style-->
     <link href="~/Assets/css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -25,7 +30,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--dropdown-->
     <script src="~/Assets/js/jquery.easydropdown.js"></script>
 
-   @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <!--top-header-->
@@ -75,5 +79,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
         </div>
     </div>
+
+    
+    @RenderSection("scripts", required: false)
 </body>
 </html>

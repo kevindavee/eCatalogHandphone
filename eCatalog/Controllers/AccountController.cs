@@ -79,7 +79,9 @@ namespace eCatalog.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    //Kalau user bukan admin, redirect ke page lain
+                    return RedirectToAction("IndexHandphone", "Admin");
+                    //return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

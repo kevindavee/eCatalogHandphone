@@ -5,11 +5,11 @@
     <div class="mepanel">
         <div class="row">
             <div class="col1 me-one">
-                <h4><a href="@Url.Action("Index", "Handphone", new { PageIndex = 0, BrandId = 0})">All Brand</a></h4>
+                <h4><a href="@Url.Action("Index", "Handphone", new { BrandId = 0})">All Brand</a></h4>
                 <ul>
                     @foreach (var item in Model)
                     {
-                        <li><a href="@Url.Action("Index", "Handphone", new { PageIndex = 0, BrandId = item.Id})">@item.Name</a></li>
+                        <li><a href="@Url.Action("Index", "Handphone", new { BrandId = item.Id})">@item.Name</a></li>
                     }
                 </ul>
             </div>

@@ -11,12 +11,14 @@ using System.Web.Mvc;
 
 namespace eCatalog.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         HandphoneRepo handphoneRepo = new HandphoneRepo();
         BrandRepo brandRepo = new BrandRepo();
 
         // GET: Admin
+        [Authorize(Roles = "Admin")]
         public ActionResult IndexHandphone()
         {
             //Controller untuk master page admin
@@ -27,13 +29,15 @@ namespace eCatalog.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult IndexBrand()
         {
             var model = brandRepo.GetAll();
 
             return View(model);
         }
-        
+
+        [Authorize(Roles = "Admin")]
         public ActionResult Statistics()
         {
             //Controller untuk menampilkan page statistics
@@ -45,6 +49,7 @@ namespace eCatalog.Controllers
             return View(viewmodel);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult AddHandphone(long id)
         {
             //Controller untuk menampilkan page add/edit product
@@ -67,6 +72,7 @@ namespace eCatalog.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult AddHandphone([Bind(Include = "Id, BrandId, Name, ProductDescription, SellPrice, BuyPrice")] Handphone handphone, HttpPostedFileBase upload)
         {
             //Controller untuk proses add/edit product
@@ -92,8 +98,8 @@ namespace eCatalog.Controllers
             }
             
         }
-        
 
+        [Authorize(Roles = "Admin")]
         public ActionResult AddBrand(long id)
         {
             //Controller untuk menampilkan page add/edit brand
@@ -114,6 +120,7 @@ namespace eCatalog.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult AddBrand([Bind(Include ="Id, Name")]Brand brand)
         {
             //Controller untuk proses add/edit brand
@@ -138,6 +145,7 @@ namespace eCatalog.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteHandphone(long id)
         {
             //Controller untuk proses delete handphone
@@ -148,6 +156,7 @@ namespace eCatalog.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteBrand(long id)
         {
             //Controller untuk proses delete brand

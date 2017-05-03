@@ -46,6 +46,26 @@ namespace eCatalog.DAL.HandphoneRepo
             return list;
         }
 
+        public List<Handphone> GetSorted(List<Handphone> list, int sort)
+        {
+            switch (sort)
+            {
+                case 1:
+                    list = list.OrderByDescending(o => o.Seen).ToList();
+                    break;
+                case 2:
+                    list = list.OrderBy(o => o.BuyPrice).ToList();
+                    break;
+                case 3:
+                    list = list.OrderByDescending(o => o.BuyPrice).ToList();
+                    break;
+                default:
+                    break;
+            }
+
+            return list;
+        }
+
         public override List<Handphone> GetAll()
         {
             return dbSet.Where(s => s.isDeleted == false).OrderBy(o => o.Id).Include(i => i.Brand).ToListAsync().Result;

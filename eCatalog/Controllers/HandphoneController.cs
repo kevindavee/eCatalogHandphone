@@ -1,5 +1,4 @@
-﻿using eCatalog.Constants;
-using eCatalog.DAL.HandphoneRepo;
+﻿using eCatalog.DAL.HandphoneRepo;
 using eCatalog.ViewModel;
 using System;
 using System.Collections.Generic;

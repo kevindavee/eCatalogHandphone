@@ -13,8 +13,13 @@ namespace eCatalog.Core.HandphoneClass
         public string Name { get; set; } = "";
         [DataType(DataType.MultilineText)]
         public string ProductDescription { get; set; } = "";
+
+        [DisplayFormat(DataFormatString = "{0:#,##0.##}")]
         public int SellPrice { get; set; } = 0;
+
+        [DisplayFormat(DataFormatString = "{0:#,##0.##}")]
         public int? BuyPrice { get; set; } = null;
+
         public int Seen { get; set; } = 0;
         public bool isDeleted { get; set; } = false;
         public string ImageUrl { get; set; } = "";

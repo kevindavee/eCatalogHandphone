@@ -1,21 +1,19 @@
 ﻿@model IEnumerable<eCatalog.Core.HandphoneClass.Brand>
 
 @{
-    ViewBag.Title = "IndexBrand";
+    ViewBag.Title = "Manage Brand";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<h1>@ViewBag.Title</h1>
-<br />
-<br />
-<div class="row">
-    <div class="col-md-2">
-        <a href="@Url.Action("AddBrand", new { id = 0})" class="btn btn-primary">Add New</a>
-    </div>
+
+<div class="col-md-6">
+    <h1>@ViewBag.Title</h1>
+    <br />
+    <br />
+    <a href="@Url.Action("AddBrand", new { id = 0})" class="btn btn-primary">Add New</a>
 </div>
 <br />
-<div class="row">
-    <div class="col-md-12">
-        <table class="table table-bordered table-striped table-responsive text-center table-admin">
+<div class="col-md-12">
+        <table class="table table-bordered table-responsive text-center data-table">
             <thead>
                 <tr>
                     <td>Nama Handphone</td>
@@ -42,6 +40,6 @@
         </table>
 
     </div>
-</div>
+
 
 

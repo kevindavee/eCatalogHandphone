@@ -4,6 +4,7 @@
     ViewBag.Title = "Index";
 }
 
+@Html.HiddenFor(model => model.BrandId)
 	<!--end-breadcrumbs-->
 <!--prdt-starts-->
 <div class="col-md-12">
@@ -12,7 +13,7 @@
             <ul>
                 <li>
                     Sort
-                    <select style="margin-left:10px;">
+                    <select style="margin-left:10px;" id="dropdown-sort">
                         <option value="0">All</option>
                         <option value="1">Most Seen</option>
                         <option value="2">Lowest Price</option>
@@ -28,13 +29,13 @@
         <div class="available">
             <div class="form-group">
                 <div class="col-md-2">
-                    <label for="usr"style="margin-top:20px;margin-left:-20px;">Harga Min:</label>
+                    <label for="usr"style="margin-top:20px;margin-left:-20px;">Min Price:</label>
                 </div>
                 <div class="col-md-4">
                     <input type="number" style="margin-top:7px;margin-left:-10px;height:50px;" class="form-control" id="txt-min-harga">
                 </div>
                 <div class="col-md-2">
-                    <label for="usr" style="margin-top:20px;margin-left:-20px;">Harga Max:</label>
+                    <label for="usr" style="margin-top:20px;margin-left:-20px;">Max Price:</label>
                 </div>
                 <div class="col-md-4">
                     <input type="number" style="margin-top:7px;margin-left:-5px;height:50px;"class="form-control" id="txt-max-harga">
@@ -46,44 +47,24 @@
     <div class="col-md-2">
       
 
-        <a class="btn btn-block btn-success" type="button" style="background-color:darkblue;margin-top:27px;" href="#" >Cari</a>
-        
+        <a class="btn btn-block btn-success" type="button" id="btn-search" style="background-color:darkblue;margin-top:27px;" href="#" >Search</a>
     </div>
 </div>
 
 <div class="prdt">
     <div class="container">
-        <div class="prdt-top">
-            <div class="col-md-12">
-                @{ int i = 0;}
-                @foreach (var item in Model.Handphone)
-                {
-                    if ((i / 4) == 0)
-                    {
-                        @:<div class="product-one">
-                    }
-                    <div class="col-md-3 product-left p-left">
-                        <div class="product-main simpleCart_shelfItem">
-                            <a href="@Url.Action("Details", "Handphone", new { id = item.Id })" class="mask"><img class="img-responsive zoom-img" src="~/Assets/images/p-1.png" alt="" /></a>
-                            <div class="product-bottom">
-                                <h3>@item.Name</h3>
-                                <p>@item.Brand.Name</p>
-                                <h4> <span class=" item_price">Rp. @item.SellPrice</span></h4>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    if ((i % 4) == 3)
-                    {
-                        @:<div class="clearfix"></div>
-                        @:</div>
-                    }
-                    i++;
-                }
-                <div class="clearfix"></div>
-            </div>
+        <div class="prdt-top" id="div-handphone-items">
+            @{ Html.RenderAction("IndexList", new { PageIndex = 0, BrandId = Model.BrandId, sort = 0 });}
         </div>
     </div>
 </div>
 <!--product-end-->
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <button type="button" class="btn btn-info btn-toggle-handphone" value="0">Prev</button>
+        <button type="button" class="btn btn-info btn-toggle-handphone pull-right" value="1">Next</button>
+    </div>
+</div>
 
+<script type="text/javascript" src="~/Scripts/Handphone/handphone-jquery.js"></script>

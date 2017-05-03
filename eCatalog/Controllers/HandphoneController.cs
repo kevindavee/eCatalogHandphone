@@ -1,5 +1,6 @@
 ﻿using eCatalog.DAL.HandphoneRepo;
 using eCatalog.ViewModel;
+using eCatalog.ViewModel.HandphoneViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +14,23 @@ namespace eCatalog.Controllers
         HandphoneRepo handphoneRepo = new HandphoneRepo();
 
         // GET: Handphone
-        public ActionResult Index(int PageIndex, long BrandID, int? MaxHarga, int? MinHarga)
+        public ActionResult Index(long BrandID)
         {
             //Controller untuk menampilkan page list of handphone
             //UI : Vindy
             //Code : Geraldo
             //abc
-            int PageSize = 16;
             HandphoneIndexViewModel viewmodel = new HandphoneIndexViewModel();
+
+            viewmodel.BrandId = BrandID;
+
+            return View(viewmodel);
+        }
+
+        public PartialViewResult IndexList(int PageIndex, int BrandID, int? MaxHarga, int? MinHarga, int sort)
+        {
+            HandphoneIndexListViewModel viewmodel = new HandphoneIndexListViewModel();
+            int PageSize = 2;
 
             //Filtering Brand
             if (BrandID == 0)
@@ -35,11 +45,15 @@ namespace eCatalog.Controllers
             //Filter by Price range
             viewmodel.Handphone = handphoneRepo.GetbyFilterPrice(viewmodel.Handphone, MinHarga, MaxHarga);
 
-            viewmodel.PageCounts = (int)Math.Ceiling(Convert.ToDecimal(viewmodel.Handphone.Count / PageSize));
+            //Sorting
+            viewmodel.Handphone = handphoneRepo.GetSorted(viewmodel.Handphone, sort);
+
+            decimal counts = (decimal)viewmodel.Handphone.Count / PageSize;
+            viewmodel.PageCounts = (int)Math.Ceiling(counts);
             viewmodel.PageIndex = PageIndex;
             viewmodel.Handphone = handphoneRepo.GetListforOnePage(viewmodel.Handphone, PageIndex, PageSize);
 
-            return View(viewmodel);
+            return PartialView("_IndexList", viewmodel);
         }
 
         public ActionResult Details(long id)

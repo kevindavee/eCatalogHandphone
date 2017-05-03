@@ -415,7 +415,8 @@ $.extend($.validator, {
 		// http://docs.jquery.com/Plugins/Validation/Validator/element
 		element: function( element ) {
 			/// <summary>
-			/// Validates a single element, returns true if it is valid, false otherwise.
+			/// Validates a 
+ element, returns true if it is valid, false otherwise.
 			/// This behaves as validation on blur or keyup, but returns the result.
 			/// </summary>
 			/// <param name="element" type="Selector">

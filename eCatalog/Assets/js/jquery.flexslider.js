@@ -1145,7 +1145,8 @@
     minItems: 1,                    //{NEW} Integer: Minimum number of carousel items that should be visible. Items will resize fluidly when below this.
     maxItems: 0,                    //{NEW} Integer: Maxmimum number of carousel items that should be visible. Items will resize fluidly when above this limit.
     move: 0,                        //{NEW} Integer: Number of carousel items that should move on animation. If 0, slider will move all visible items.
-    allowOneSlide: true,           //{NEW} Boolean: Whether or not to allow a slider comprised of a single slide
+    allowOneSlide: true,           //{NEW} Boolean: Whether or not to allow a slider comprised of a 
+ slide
 
     // Callback API
     start: function(){},            //Callback: function(slider) - Fires when the slider loads the first slide

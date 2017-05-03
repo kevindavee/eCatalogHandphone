@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+@model IEnumerable<eCatalog.Core.HandphoneClass.Handphone>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -89,7 +90,7 @@
             <div class="product-one">
                 <div class="col-md-3 product-left">
                     <div class="product-main simpleCart_shelfItem">
-                        <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="~/Assets/images/p-1.png" alt="" /></a>
+                        <a href="@Url.Action("Details", "Handphone" ,new {id=1 })" class="mask"><img class="img-responsive zoom-img" src="~/Assets/images/p-1.png" alt="" /></a>
                         <div class="product-bottom">
                             <h3>Smart Watches</h3>
                             <p>Explore Now</p>
@@ -100,7 +101,7 @@
                 </div>
                 <div class="col-md-3 product-left">
                     <div class="product-main simpleCart_shelfItem">
-                        <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="~/Assets/images/p-2.png" alt="" /></a>
+                        <a href="@Url.Action("Details", "Handphone", new {id =2 })" class="mask"><img class="img-responsive zoom-img" src="~/Assets/images/p-2.png" alt="" /></a>
                         <div class="product-bottom">
                             <h3>Smart Watches</h3>
                             <p>Explore Now</p>
@@ -111,8 +112,8 @@
                 </div>
                 <div class="col-md-3 product-left">
                     <div class="product-main simpleCart_shelfItem">
-                        <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="~/Assets/images/p-3.png" alt="" /></a>
-                        <div class="product-bottom">
+                        <a href="@Url.Action("Details", "Handphone", new {id =3 })" class="mask"><img class="img-responsive zoom-img" src="~/Assets/images/p-3.png" alt="" /></a>
+                        <div class="product-bottom"> 
                             <h3>Smart Watches</h3>
                             <p>Explore Now</p>
                             <h4></i></a> <span class=" item_price">Rp 329</span></h4>
@@ -121,8 +122,8 @@
                     </div>
                 </div>
                 <div class="col-md-3 product-left">
-                    <div class="product-main simpleCart_shelfItem">
-                        <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="~/Assets/images/p-4.png" alt="" /></a>
+                    <div class="product-main simpleCart_shelfItem">  @*new {id=1 }*@
+                        <a href="@Url.Action("Details", "Handphone", new {id =4 })" class="mask"><img class="img-responsive zoom-img" src="~/Assets/images/p-4.png" alt="" /></a>
                         <div class="product-bottom">
                             <h3>Smart Watches</h3>
                             <p>Explore Now</p>
@@ -136,7 +137,7 @@
             <div class="product-one">
                 <div class="col-md-3 product-left">
                     <div class="product-main simpleCart_shelfItem">
-                        <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="~/Assets/images/p-5.png" alt="" /></a>
+                        <a href="@Url.Action("Details", "Handphone", new {id =5 })" class="mask"><img class="img-responsive zoom-img" src="~/Assets/images/p-5.png" alt="" /></a>
                         <div class="product-bottom">
                             <h3>Smart Watches</h3>
                             <p>Explore Now</p>
@@ -147,7 +148,7 @@
                 </div>
                 <div class="col-md-3 product-left">
                     <div class="product-main simpleCart_shelfItem">
-                        <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="~/Assets/images/p-6.png" alt="" /></a>
+                        <a href="@Url.Action("Details", "Handphone", new {id =6 })"   class="mask"><img class="img-responsive zoom-img" src="~/Assets/images/p-6.png" alt="" /></a>
                         <div class="product-bottom">
                             <h3>Smart Watches</h3>
                             <p>Explore Now</p>
@@ -158,7 +159,7 @@
                 </div>
                 <div class="col-md-3 product-left">
                     <div class="product-main simpleCart_shelfItem">
-                        <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="~/Assets/images/p-7.png" alt="" /></a>
+                        <a href="@Url.Action("Details", "Handphone", new {id =7 })"   class="mask"><img class="img-responsive zoom-img" src="~/Assets/images/p-7.png" alt="" /></a>
                         <div class="product-bottom">
                             <h3>Smart Watches</h3>
                             <p>Explore Now</p>
@@ -169,7 +170,7 @@
                 </div>
                 <div class="col-md-3 product-left">
                     <div class="product-main simpleCart_shelfItem">
-                        <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="~/Assets/images/p-8.png" alt="" /></a>
+                        <a href="@Url.Action("Details", "Handphone", new {id =8 })" class="mask"><img class="img-responsive zoom-img" src="~/Assets/images/p-8.png" alt="" /></a>
                         <div class="product-bottom">
                             <h3>Smart Watches</h3>
                             <p>Explore Now</p>

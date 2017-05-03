@@ -109,7 +109,7 @@ namespace eCatalog.Controllers
             {
                 model = brandRepo.GetById(id);
             }
-            return View();
+            return View(model);
         }
 
         [HttpPost]

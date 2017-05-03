@@ -10,7 +10,7 @@
     <link href="~/Assets/css/matrix-media.css" rel="stylesheet" />
     <link href="~/Assets/css/font-awesome.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" />
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
@@ -31,24 +31,13 @@
         <a href="#" class="visible-phone"><i class="icon icon-info-sign"></i> Error</a>
         <ul>
             @*<li><a href="~/Views/Admin/"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>*@
-            <li><a href="@Url.Action("IndexHandphone", "Admin")"><i class="glyphicon glyphicon-phone"></i> <span>Admin Handphone</span></a> </li>
-            <li><a href="@Url.Action("IndexBrand", "Admin")"><i class="glyphicon glyphicon-phone"></i> <span>Admin Brand</span></a> </li>
+            <li><a href="@Url.Action("IndexHandphone", "Admin")"><i class="glyphicon glyphicon-phone"></i> <span>Manage Handphone</span></a> </li>
+            <li><a href="@Url.Action("IndexBrand", "Admin")"><i class="glyphicon glyphicon-phone"></i> <span>Manage Brand</span></a> </li>
         </ul>
     </div>
 
     <div id="content">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="widget-box">
-                    <div class="widget-content">
-                        <div class="container body-content">
-                            @RenderBody()
-                            <hr />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @RenderBody()
     </div>
     <!--Footer-part-->
     <div class="row-fluid">

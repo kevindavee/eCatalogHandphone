@@ -17,44 +17,21 @@ namespace eCatalog.Controllers
         BrandRepo brandRepo = new BrandRepo();
 
         // GET: Admin
-        public ActionResult Index()
+        public ActionResult IndexHandphone()
         {
             //Controller untuk master page admin
             //UI: Vindy
             //Code: Dave
-            AdminIndexViewModel viewmodel = new AdminIndexViewModel();
-            viewmodel.Handphone.Handphone = handphoneRepo.GetListforOnePage(handphoneRepo.GetAll(), 0, 20);
-            viewmodel.Handphone.PageCounts = (int)Math.Ceiling(Convert.ToDecimal(handphoneRepo.GetAll().Count() / 20));
+            var model = handphoneRepo.GetAll();
 
-            viewmodel.Brand.Brand = brandRepo.GetListforOnePage(brandRepo.GetAll(), 0, 20);
-            viewmodel.Brand.PageCounts = (int)Math.Ceiling(Convert.ToDecimal(brandRepo.GetAll().Count / 20));
-
-            return View(viewmodel);
+            return View(model);
         }
 
-        public PartialViewResult ListOfHandphone(int PageIndex)
+        public ActionResult IndexBrand()
         {
-            //Controller untuk return list of handphone
-            //UI: Vindy
-            //Code: Dave
-            AdminHandphoneViewModel viewmodel = new AdminHandphoneViewModel();
-            viewmodel.Handphone = handphoneRepo.GetListforOnePage(handphoneRepo.GetAll(), PageIndex, 20);
-            viewmodel.PageCounts = (int)Math.Ceiling(Convert.ToDecimal(handphoneRepo.GetAll().Count / 20));
-            
-            return PartialView("_Handphone", viewmodel);
-        }
+            var model = brandRepo.GetAll();
 
-        public PartialViewResult ListOfBrand(int PageIndex)
-        {
-            //Controller untuk return list of brand
-            //UI: Vindy
-            //Code: Dave
-
-            AdminBrandViewModel viewmodel = new AdminBrandViewModel();
-            viewmodel.Brand = brandRepo.GetAll();
-            viewmodel.PageCounts = (int)Math.Ceiling(Convert.ToDecimal(viewmodel.Brand.Count / 20));
-
-            return PartialView("_Brand", viewmodel);
+            return View(model);
         }
         
         public ActionResult Statistics()
@@ -68,18 +45,29 @@ namespace eCatalog.Controllers
             return View(viewmodel);
         }
 
-        public ActionResult AddHanphone(long id)
+        public ActionResult AddHandphone(long id)
         {
             //Controller untuk menampilkan page add/edit product
             //UI: Vindy
             //Code : Sindhu
+            Handphone model;
+            ViewBag.Brand = new SelectList(brandRepo.GetAllOrderbyName(), "Id", "Name");
 
-            return View();
+            if (id == 0)
+            {
+                model = new Handphone();
+            }
+            else
+            {
+                model = handphoneRepo.GetById(id);
+            }
+
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddHandphone([Bind(Include = "Id, BrandId, Name, ProductSpecification, SellPrice, BuyPrice")] Handphone handphone)
+        public ActionResult AddHandphone([Bind(Include = "Id, BrandId, Name, ProductDescription, SellPrice, BuyPrice")] Handphone handphone, HttpPostedFileBase upload)
         {
             //Controller untuk proses add/edit product
             //Code : Sindhu
@@ -87,26 +75,41 @@ namespace eCatalog.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    if (upload != null)
+                    {
+                        handphone.ImageUrl = SaveImage(upload);
+                    }
                     handphoneRepo.Save(handphone);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("IndexHandphone");
                 }
-
+                ViewBag.Brand = new SelectList(brandRepo.GetAllOrderbyName(), "Id", "Name");
                 return View(handphone);
             }
             catch
             {
+                ViewBag.Brand = new SelectList(brandRepo.GetAllOrderbyName(), "Id", "Name");
                 return View(handphone);
             }
             
         }
         
 
-        public ActionResult AddBrand()
+        public ActionResult AddBrand(long id)
         {
             //Controller untuk menampilkan page add/edit brand
             //UI: Vindy
             //Code: Sindhu
-            return View();
+
+            Brand model;
+            if (id == 0)
+            {
+                model = new Brand();
+            }
+            else
+            {
+                model = brandRepo.GetById(id);
+            }
+            return View(model);
         }
 
         [HttpPost]
@@ -122,7 +125,7 @@ namespace eCatalog.Controllers
                 if (ModelState.IsValid)
                 {
                     brandRepo.Save(brand);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("IndexBrand");
                 }
                 return View(brand);
             }
@@ -140,7 +143,7 @@ namespace eCatalog.Controllers
             //Controller untuk proses delete handphone
             //Code: Geraldo
             handphoneRepo.Delete(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexHandphone");
         }
 
         [HttpPost]
@@ -150,7 +153,7 @@ namespace eCatalog.Controllers
             //Controller untuk proses delete brand
             //Code: Geraldo
             brandRepo.Delete(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexBrand");
         }
 
         public string SaveImage(HttpPostedFileBase upload)
@@ -159,7 +162,7 @@ namespace eCatalog.Controllers
 
             if (upload != null)
             {
-                var fileName = "~/Images/Handphone" + Path.GetFileName(upload.FileName);
+                var fileName = "~/Images/Handphone/" + Path.GetFileName(upload.FileName);
 
                 upload.SaveAs(Server.MapPath(fileName));
                 imageUrl = fileName;

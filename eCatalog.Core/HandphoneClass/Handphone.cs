@@ -1,6 +1,7 @@
 ﻿using eCatalog.Commons;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace eCatalog.Core.HandphoneClass
     public class Handphone: Parent
     {
         public string Name { get; set; } = "";
+        [DataType(DataType.MultilineText)]
         public string ProductDescription { get; set; } = "";
         public int SellPrice { get; set; } = 0;
         public int? BuyPrice { get; set; } = null;

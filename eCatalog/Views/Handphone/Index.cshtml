@@ -7,16 +7,16 @@
 	<!--end-breadcrumbs-->
 <!--prdt-starts-->
 <div class="col-md-12">
-    <div class="col-md-5">
+    <div class="col-md-3">
         <div class="available">
             <ul>
                 <li>
                     Sort
-                    <select>
-                        <option>Silver</option>
-                        <option>Black</option>
-                        <option>Dark Black</option>
-                        <option>Red</option>
+                    <select style="margin-left:10px;">
+                        <option value="0">All</option>
+                        <option value="1">Most Seen</option>
+                        <option value="2">Lowest Price</option>
+                        <option value="3">Highest Price</option>
                     </select>
                 </li>
 
@@ -27,30 +27,34 @@
     <div class="col-md-7">
         <div class="available">
             <div class="form-group">
-                <div class="col-md-3">
-                    <label for="usr"style="margin-top:5px;">Harga Min:</label>
+                <div class="col-md-2">
+                    <label for="usr"style="margin-top:20px;margin-left:-20px;">Harga Min:</label>
                 </div>
-                <div class="col-md-3">
-                    <input type="number" class="form-control" id="txt-min-harga">
+                <div class="col-md-4">
+                    <input type="number" style="margin-top:7px;margin-left:-10px;height:50px;" class="form-control" id="txt-min-harga">
                 </div>
-                <div class="col-md-3">
-                    <label for="usr" style="margin-top:5px;">Harga Max:</label>
+                <div class="col-md-2">
+                    <label for="usr" style="margin-top:20px;margin-left:-20px;">Harga Max:</label>
                 </div>
-                <div class="col-md-3">
-                    <input type="number" class="form-control" id="txt-max-harga">
+                <div class="col-md-4">
+                    <input type="number" style="margin-top:7px;margin-left:-5px;height:50px;"class="form-control" id="txt-max-harga">
                 </div>
             </div>
 
         </div>
     </div>
+    <div class="col-md-2">
+      
 
+        <a class="btn btn-block btn-success" type="button" style="background-color:darkblue;margin-top:27px;" href="#" >Cari</a>
+        
+    </div>
 </div>
 
 <div class="prdt">
     <div class="container">
         <div class="prdt-top">
             <div class="col-md-12">
-                
                 @{ int i = 0;}
                 @foreach (var item in Model.Handphone)
                 {
@@ -58,11 +62,9 @@
                     {
                         @:<div class="product-one">
                     }
-
                     <div class="col-md-3 product-left p-left">
                         <div class="product-main simpleCart_shelfItem">
-                            <a href="@Url.Action("Details", "Handphone", new {id= 1 })" class="mask"><img class="img-responsive zoom-img" src="~/Assets/images/p-1.png" alt="" /></a>
-                            
+                            <a href="@Url.Action("Details", "Handphone", new { id = item.Id })" class="mask"><img class="img-responsive zoom-img" src="~/Assets/images/p-1.png" alt="" /></a>
                             <div class="product-bottom">
                                 <h3>@item.Name</h3>
                                 <p>@item.Brand.Name</p>
